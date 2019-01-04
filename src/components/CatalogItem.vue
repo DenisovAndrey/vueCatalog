@@ -29,7 +29,6 @@ export default {
 	methods: {
 		addToCart(id){
 			const addedElement = addElementToCart(id);
-			const elements = store.getters.elements;
 			const elementsAddedToCart = store.getters.elementsAddedToCart;
 			const indexInAddedItems = elementsAddedToCart.findIndex(addedElement => addedElement.id === id);
 			if (indexInAddedItems === -1){

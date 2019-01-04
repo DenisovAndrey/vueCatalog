@@ -1,4 +1,3 @@
-import Vue from 'vue';
 
 export const INCREASE_IN_QUANTITY = (state, indexInAddedItems) => {
 	state.elementsAddedToCart[indexInAddedItems].quantity++;
