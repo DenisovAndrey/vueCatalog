@@ -1,30 +1,37 @@
 <template>
 	<div class="catalogContainer">
-		<div class="contianer">
+		<div class="container">
 			<div class="row">
-				<CatalogItem />
+				<CatalogItem
+					v-for="(element, key) in elements" 
+					:key="key"
+					:id="element.id" 
+					:name="element.name" 
+					:price="element.price"
+					:img="element.img" />
 			</div>
 		</div>
 	</div>
 </template>
 
 <script>
+import store from '@/store';
 import CatalogItem from './CatalogItem';
 
 export default {
 	name: 'CatalogButtons',
-	components: { CatalogItem }
+	components: { CatalogItem },
+	computed: {
+		elements() {
+			return store.getters.elements;
+		}
+	}
 }
 </script>
 
 <style lang='scss'>
-.basketButton{
-	margin-top: 20px;
-	text-align: right;
-	button{
-		background: none;
-		border: none;
-	}
+.catalogContainer{
+	padding-top: 50px;
 }
 </style>
 
