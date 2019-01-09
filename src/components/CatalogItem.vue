@@ -30,7 +30,7 @@ export default {
 		addToCart(id){
 			const addedElement = addElementToCart(id);
 			const elementsAddedToCart = store.getters.elementsAddedToCart;
-			const indexInAddedItems = elementsAddedToCart.findIndex(addedElement => addedElement.id === id);
+			const indexInAddedItems = elementsAddedToCart.findIndex(elementAddedToCart => elementAddedToCart.id === id);
 			if (indexInAddedItems === -1){
 				store.dispatch('ADD_ELEMENT_TO_CART_ARR', addedElement)
 			} else {

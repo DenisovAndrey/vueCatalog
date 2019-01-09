@@ -6,17 +6,28 @@
 				<router-link class="catalogCart__title_back" to="/">back to catalog</router-link>
 			</div>
 			<div class="row">
-				<div class="col-12 col-md-10 col-lg-8"></div>
+				<CatalogCartItem 
+					v-for="(cartItem, key) in cartItems" 
+					:key="key"
+					:id="cartItem.id" 
+					:quantity="cartItem.quantity" />
 			</div>
 		</div>
 	</div>
 </template>
 
-
-
 <script>
+import store from '@/store';
+import CatalogCartItem from './CatalogCartItem';
+
 export default {
-	name: 'CatalogCart'
+	name: 'CatalogCart',
+	components: { CatalogCartItem },
+	computed: {
+		cartItems() {
+			return store.getters.elementsAddedToCart;
+		}
+	}
 }
 </script>
 
