@@ -31,7 +31,7 @@ export default {
 
 <style lang='scss'>
 .catalogContainer{
-	padding-top: 50px;
+	padding: 50px 0;
 }
 </style>
 

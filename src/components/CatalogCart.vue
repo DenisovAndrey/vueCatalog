@@ -2,7 +2,7 @@
 	<div class="catalogCart">
 		<div class="container">
 			<div class="catalogCart__title">
-				<h2>Shopping basket</h2>
+				<h2>Shopping cart</h2>
 				<router-link class="catalogCart__title_back" to="/">back to catalog</router-link>
 			</div>
 			<div class="row">
@@ -41,6 +41,7 @@ export default {
 			justify-content: space-between;
 			align-items: center;
 			color: #91DC5A;
+			margin-bottom: 50px;
 			a{
 				color: #DC831E;
 				font-size: 20px;
