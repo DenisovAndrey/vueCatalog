@@ -9,3 +9,7 @@ export const ADD_ELEMENT_TO_CART_ARR = (state, addedElement) => {
 export const INCREASE_IN_QUANTITY_OF_ITEM = (state, paramsOfIncrease) => {
 	state.elementsAddedToCart[paramsOfIncrease.indexInCartItems].quantity += paramsOfIncrease.increment;
 }
+
+export const REMOVE_ITEM_OF_CART = (state, indexInCartItems) => {
+	state.elementsAddedToCart.splice(indexInCartItems, 1);
+}

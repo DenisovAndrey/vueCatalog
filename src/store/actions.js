@@ -9,3 +9,7 @@ export const ADD_ELEMENT_TO_CART_ARR = ({ commit }, addedElement) => {
 export const increaseInQuantityOfItem = ({ commit }, paramsOfIncrease) => {
 	commit('INCREASE_IN_QUANTITY_OF_ITEM', paramsOfIncrease);
 }
+
+export const removeItemOfCart = ({ commit }, indexInCartItems) => {
+	commit('REMOVE_ITEM_OF_CART', indexInCartItems);
+}

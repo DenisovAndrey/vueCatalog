@@ -5,6 +5,7 @@
 				<h2>Shopping cart</h2>
 				<router-link class="catalogCart__title_back" to="/">back to catalog</router-link>
 			</div>
+			<div class="catalogCart__totalCost">{{ totalCost }}</div>
 			<div class="row">
 				<CatalogCartItem 
 					v-for="(cartItem, key) in cartItems" 
@@ -26,15 +27,37 @@ export default {
 	computed: {
 		cartItems() {
 			return store.getters.elementsAddedToCart;
+		},
+		totalCost() {
+			let totalCost = 0;
+			const cartElements = store.getters.elementsAddedToCart;
+			if (cartElements.length == 0){
+				return 'There is nothing in the shopping cart';
+			}
+			const allElementsOfCatalog = store.getters.elements;
+			cartElements.forEach((item) => {
+				const price = allElementsOfCatalog[allElementsOfCatalog.findIndex(itemOfCatalog => itemOfCatalog.id === item.id)].price;
+				totalCost += item.quantity * price;
+			});
+			return `Total cost: ${totalCost} usd`;
 		}
+	},
+	destroyed: () => {
+		const cartElements = store.getters.elementsAddedToCart;
+		cartElements.forEach((item, index) => {
+			if (item.quantity === 0) {
+				store.dispatch('removeItemOfCart', index);
+			}
+		});
 	}
 }
 </script>
 
 <style lang="scss">
 	.catalogCart{
+		padding-top: 20px;
+		padding-bottom: 50px;
 		&__title{
-			margin-top: 20px;
 			flex-wrap: wrap;
 			display: flex;
 			flex-direction: row;
