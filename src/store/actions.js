@@ -1,15 +1,16 @@
-export const INCREASE_IN_QUANTITY = ({ commit }, indexInAddedItems) => {
-	commit('INCREASE_IN_QUANTITY', indexInAddedItems);
+import { addElementsToLocalStore } from '@/helpers.js';
+
+export const addElementToCart = ({ commit }, addedElement) => {
+	commit('ADD_ELEMENT_TO_CART', addedElement);
+	addElementsToLocalStore();
 }
 
-export const ADD_ELEMENT_TO_CART_ARR = ({ commit }, addedElement) => {
-	commit('ADD_ELEMENT_TO_CART_ARR', addedElement);
-}
-
-export const increaseInQuantityOfItem = ({ commit }, paramsOfIncrease) => {
-	commit('INCREASE_IN_QUANTITY_OF_ITEM', paramsOfIncrease);
+export const increaseQuantityOfElement = ({ commit }, paramsOfIncrease) => {
+	commit('INCREASE_QUANTITY_OF_ELEMENT', paramsOfIncrease);
+	addElementsToLocalStore();
 }
 
 export const removeItemOfCart = ({ commit }, indexInCartItems) => {
 	commit('REMOVE_ITEM_OF_CART', indexInCartItems);
+	addElementsToLocalStore();
 }

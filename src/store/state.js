@@ -25,5 +25,5 @@ export const state = {
 			id : 4
 		}
 	],
-	elementsAddedToCart: []
+	cartElements: []
 }

@@ -14,7 +14,6 @@
 </template>
 
 <script>
-import { addElementToCart } from '@/helpers.js';
 import store from '@/store';
 
 export default {
@@ -27,13 +26,17 @@ export default {
 	},
 	methods: {
 		addToCart(id){
-			const addedElement = addElementToCart(id);
-			const elementsAddedToCart = store.getters.elementsAddedToCart;
-			const indexInAddedItems = elementsAddedToCart.findIndex(elementAddedToCart => elementAddedToCart.id === id);
-			if (indexInAddedItems === -1){
-				store.dispatch('ADD_ELEMENT_TO_CART_ARR', addedElement)
+			const addedElement = {
+				id,
+				quantity: 1
+			};
+
+			const { cartElements } = store.getters;
+			const index = cartElements.findIndex(({ id }) => id === addedElement.id);
+			if (index === -1) {
+				store.dispatch('addElementToCart', addedElement)
 			} else {
-				store.dispatch('INCREASE_IN_QUANTITY', indexInAddedItems);
+				store.dispatch('increaseQuantityOfElement', {increment: 1, index});
 			}
 		}
 	}

@@ -4,7 +4,7 @@ export const getters = {
 	elements() {
 		return store.state.elements;
 	},
-	elementsAddedToCart() {
-		return store.state.elementsAddedToCart;
+	cartElements() {
+		return store.state.cartElements;
 	}
 }

@@ -1,7 +1,6 @@
+import store from '@/store';
 
-export const addElementToCart = id => {
-	return {
-		id: id,
-		quantity: 1
-	}
-};
+export const addElementsToLocalStore = () => {
+	const { cartElements } = store.getters;
+	localStorage.setItem('cartElements', JSON.stringify(cartElements));
+}
